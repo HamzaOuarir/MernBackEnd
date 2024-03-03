@@ -42,7 +42,7 @@ delSK = async(req, res) => {
 
     
 const imagePath = `public/${skill.image}`;
-        if(imagePath){
+        if(fs.existsSync(imagePath)){
         await fs.unlink(imagePath);
 }
 
