@@ -40,7 +40,7 @@ delDep = async(req, res) => {
 
         // Delete the image file
         const imagePath = `public/${dp.image}`;
-        if (imagePath) {
+        if (fs.existsSync(imagePath)) {
             await fs.unlink(imagePath);
         }
 
