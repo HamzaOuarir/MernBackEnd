@@ -76,7 +76,7 @@ delPro = async(req, res) => {
         const imageFiles = pro.tools.map(tool => tool.image);
 
         for (const imageFile of imageFiles) {
-            if (imageFile) {
+            if (fs.existsSync(`public/${imageFile}`)) {
                 await fs.unlink(`public/${imageFile}`);
             }
 
@@ -84,7 +84,7 @@ delPro = async(req, res) => {
 
         // Delete the image file
         const imagePath = `public/${pro.image}`;
-        if (imagePath) {
+        if (fs.existsSync(imagePath)) {
             await fs.unlink(imagePath);
         }
         await Project.findByIdAndDelete(id);
